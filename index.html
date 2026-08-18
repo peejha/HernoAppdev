@@ -3,135 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Elmar Jhon Herno | Personal Biodata</title>
+    <title>Full Name Calculator</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
-    <header>
-        <nav class="navbar">
-            <h2 class="logo">Elmar Jhon Herno</h2>
+    <div class="container">
 
-            <div class="nav-buttons">
-                <a href="#home">Home</a>
-                <a href="#about">About Me</a>
-                <a href="#education">Education</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
+        <h1>Full Name Calculator</h1>
 
+        <div class="name-section">
+            <input type="text" id="firstName" placeholder="First Name">
+            <input type="text" id="middleName" placeholder="Middle Name">
+            <input type="text" id="lastName" placeholder="Last Name">
 
-    <!-- Home Section -->
-    <section id="home" class="home">
-        <div class="home-content">
-            <h1>Hello, I'm <span>Elmar Jhon Herno</span></h1>
+            <button class="name-btn" onclick="showFullName()">
+                Show Full Name
+            </button>
 
-            <p>
-                Welcome to my personal biodata website.
-            </p>
-
-            <p>
-                I am a BSIT student from Cabatuan, Isabela.
-            </p>
-
-            <a href="#about" class="button">View My Biodata</a>
+            <h2 id="fullName">Your Name</h2>
         </div>
-    </section>
 
+        <hr>
 
-    <!-- About Me Section -->
-    <section id="about" class="section">
-        <h1>About Me</h1>
+        <h2>Calculator</h2>
 
-        <div class="card">
+        <input type="number" id="num1" placeholder="Enter First Number">
+        <input type="number" id="num2" placeholder="Enter Second Number">
 
-            <div class="profile">
-                <div class="profile-circle">
-                    EJH
-                </div>
-            </div>
-
-            <table>
-                <tr>
-                    <td>Full Name</td>
-                    <td>Elmar Jhon Herno</td>
-                </tr>
-
-                <tr>
-                    <td>Age</td>
-                    <td>24 years old</td>
-                </tr>
-
-                <tr>
-                    <td>Birth Date</td>
-                    <td>July 30, 2002</td>
-                </tr>
-
-                <tr>
-                    <td>Address</td>
-                    <td>Cabatuan, Isabela</td>
-                </tr>
-
-                <tr>
-                    <td>Course</td>
-                    <td>Bachelor of Science in Information Technology</td>
-                </tr>
-
-                <tr>
-                    <td>Status</td>
-                    <td>College Student</td>
-                </tr>
-            </table>
-
+        <div class="buttons">
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('-')">−</button>
+            <button onclick="calculate('*')">×</button>
+            <button onclick="calculate('/')">÷</button>
         </div>
-    </section>
 
-
-    <!-- Education Section -->
-    <section id="education" class="section education">
-        <h1>Educational Background</h1>
-
-        <div class="education-card">
-            <h2>Bachelor of Science in Information Technology</h2>
-
-            <p>
-                I am currently taking a Bachelor of Science in
-                Information Technology (BSIT).
-            </p>
-
-            <p>
-                My course focuses on computer technology, programming,
-                software development, databases, and information systems.
-            </p>
+        <div id="result">
+            Result: 0
         </div>
-    </section>
+
+    </div>
+
+    <script>
+
+        function showFullName() {
+
+            let first = document.getElementById("firstName").value;
+            let middle = document.getElementById("middleName").value;
+            let last = document.getElementById("lastName").value;
+
+            document.getElementById("fullName").innerHTML =
+                first + " " + middle + " " + last;
+        }
 
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <h1>Contact</h1>
+        function calculate(operator) {
 
-        <div class="contact-card">
-            <p><strong>Name:</strong> Elmar Jhon Herno</p>
-            <p><strong>Address:</strong> Cabatuan, Isabela</p>
-            <p><strong>Course:</strong> BSIT Student</p>
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
 
-            <a href="#home" class="button">Back to Home</a>
-        </div>
-    </section>
+            let result;
 
+            if (operator === "+") {
+                result = num1 + num2;
+            }
 
-    <!-- Footer -->
-    <footer>
-        <p>
-            &copy; 2026 Elmar Jhon Herno | Personal Biodata
-        </p>
-    </footer>
+            else if (operator === "-") {
+                result = num1 - num2;
+            }
+
+            else if (operator === "*") {
+                result = num1 * num2;
+            }
+
+            else if (operator === "/") {
+
+                if (num2 === 0) {
+                    result = "Cannot divide by zero";
+                } else {
+                    result = num1 / num2;
+                }
+            }
+
+            document.getElementById("result").innerHTML =
+                "Result: " + result;
+        }
+
+    </script>
 
 </body>
 </html>
