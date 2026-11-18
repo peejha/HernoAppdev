@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Dashboard</title>
+<style>
+:root{--navy:#172554;--blue:#2563eb;--bg:#f3f6fb;--ink:#172033;--muted:#64748b;--line:#e5eaf2;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+.layout{display:flex;min-height:100vh}.sidebar{width:235px;background:var(--navy);color:white;padding:26px 18px;flex-shrink:0}
+.brand{font-size:21px;font-weight:700;margin:0 0 36px}.brand span{color:#93c5fd}.nav-label{font-size:11px;color:#a5b4fc;text-transform:uppercase;letter-spacing:1px;margin:25px 10px 10px}
+.nav a{display:block;color:#dbeafe;text-decoration:none;padding:12px 13px;border-radius:9px;margin:4px 0;font-size:14px}.nav a.active,.nav a:hover{background:#29417e;color:white}
+main{padding:30px;width:100%;max-width:1500px;margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:25px}
+h1{font-size:27px;margin:0 0 6px}.sub{color:var(--muted);font-size:14px}.user{background:white;border:1px solid var(--line);padding:10px 14px;border-radius:10px;font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}.card,.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 3px 12px #17255408}
+.kpi-title{color:var(--muted);font-size:13px}.kpi{font-size:28px;font-weight:700;margin:10px 0 5px}.change{font-size:12px;color:#15803d}
+.content{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-bottom:18px}.panel h2{font-size:17px;margin:0 0 5px}.panel .hint{font-size:12px;color:var(--muted);margin-bottom:20px}
+.chart{height:220px;display:flex;align-items:end;gap:12px;padding:10px 5px 0;border-bottom:1px solid var(--line)}
+.bar-wrap{height:100%;flex:1;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:8px}
+.bar{width:min(34px,75%);background:linear-gradient(180deg,#60a5fa,#2563eb);border-radius:7px 7px 0 0;min-height:8px}
+.month{font-size:11px;color:var(--muted)}
+.category{margin:17px 0}.cat-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px}.track{height:9px;background:#edf2f8;border-radius:20px;overflow:hidden}.fill{height:100%;border-radius:20px;background:#3b82f6}
+.table-panel{overflow:hidden}.table-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
+input,select{padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:white;font-size:13px}
+table{width:100%;border-collapse:collapse;text-align:left;font-size:13px}th{color:var(--muted);font-weight:600;background:#f8fafc}th,td{padding:13px 12px;border-bottom:1px solid var(--line)}
+.status{padding:5px 9px;border-radius:20px;font-size:11px;background:#dcfce7;color:#166534}.status.pending{background:#fef3c7;color:#92400e}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:20px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.content{grid-template-columns:1fr}.sidebar{width:190px}}
+@media(max-width:620px){.layout{display:block}.sidebar{width:100%;padding:18px}.brand{margin-bottom:12px}.nav{display:flex;overflow:auto;gap:5px}.nav-label{display:none}.nav a{white-space:nowrap}.cards{grid-template-columns:1fr 1fr}main{padding:18px}.topbar{align-items:flex-start}.user{display:none}.table-panel{overflow-x:auto}table{min-width:620px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand">NOVA<span>•</span> BUSINESS</div>
+  <div class="nav-label">Main menu</div>
+  <nav class="nav">
+    <a class="active" href="#overview">▦ &nbsp; Dashboard</a>
+    <a href="#sales">▤ &nbsp; Sales</a>
+    <a href="#products">□ &nbsp; Products</a>
+    <a href="#customers">♙ &nbsp; Customers</a>
+    <a href="#reports">▧ &nbsp; Reports</a>
+  </nav>
+  <div class="nav-label">Account</div>
+  <nav class="nav"><a href="#settings">⚙ &nbsp; Settings</a></nav>
+</aside>
+<main id="overview">
+  <div class="topbar">
+    <div><h1>Business Dashboard</h1><div class="sub">Welcome back! Here's your business overview.</div></div>
+    <div class="user">Administrator &nbsp; ●</div>
+  </div>
+  <section class="cards">
+    <div class="card"><div class="kpi-title">Total Sales</div><div class="kpi">₱128,450</div><div class="change">▲ 12.8% from last month</div></div>
+    <div class="card"><div class="kpi-title">Total Orders</div><div class="kpi">1,248</div><div class="change">▲ 8.2% from last month</div></div>
+    <div class="card"><div class="kpi-title">Products</div><div class="kpi">356</div><div class="change">12 added this month</div></div>
+    <div class="card"><div class="kpi-title">Customers</div><div class="kpi">892</div><div class="change">▲ 5.4% from last month</div></div>
+  </section>
+  <section class="content" id="sales">
+    <div class="panel"><h2>Monthly Sales</h2><div class="hint">Sample sales performance for January–December</div>
+      <div class="chart" aria-label="Monthly sales bar chart">
+        <div class="bar-wrap"><div class="bar" style="height:42%"></div><span class="month">Jan</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:56%"></div><span class="month">Feb</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:48%"></div><span class="month">Mar</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:68%"></div><span class="month">Apr</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:61%"></div><span class="month">May</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:78%"></div><span class="month">Jun</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:70%"></div><span class="month">Jul</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:88%"></div><span class="month">Aug</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:75%"></div><span class="month">Sep</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:92%"></div><span class="month">Oct</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:82%"></div><span class="month">Nov</span></div>
+        <div class="bar-wrap"><div class="bar" style="height:100%"></div><span class="month">Dec</span></div>
+      </div>
+    </div>
+    <div class="panel" id="reports"><h2>Sales by Category</h2><div class="hint">Share of total sales</div>
+      <div class="category"><div class="cat-row"><span>Electronics</span><b>42%</b></div><div class="track"><div class="fill" style="width:42%"></div></div></div>
+      <div class="category"><div class="cat-row"><span>Clothing</span><b>28%</b></div><div class="track"><div class="fill" style="width:28%"></div></div></div>
+      <div class="category"><div class="cat-row"><span>Home & Living</span><b>18%</b></div><div class="track"><div class="fill" style="width:18%"></div></div></div>
+      <div class="category"><div class="cat-row"><span>Others</span><b>12%</b></div><div class="track"><div class="fill" style="width:12%"></div></div></div>
+    </div>
+  </section>
+  <section class="panel table-panel" id="products">
+    <div class="table-head"><div><h2>Recent Transactions</h2><div class="hint" style="margin:5px 0 0">A sample list of recent orders</div></div>
+      <input id="search" type="search" placeholder="Search customer..." aria-label="Search customer">
+    </div>
+    <table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+    <tbody id="orders">
+      <tr><td>#ORD-1001</td><td>Maria Santos</td><td>Nov 18, 2026</td><td>₱4,500</td><td><span class="status">Completed</span></td></tr>
+      <tr><td>#ORD-1002</td><td>Juan Dela Cruz</td><td>Nov 17, 2026</td><td>₱2,850</td><td><span class="status pending">Pending</span></td></tr>
+      <tr><td>#ORD-1003</td><td>Angela Reyes</td><td>Nov 16, 2026</td><td>₱7,200</td><td><span class="status">Completed</span></td></tr>
+      <tr><td>#ORD-1004</td><td>Mark Garcia</td><td>Nov 15, 2026</td><td>₱1,950</td><td><span class="status">Completed</span></td></tr>
+      <tr><td>#ORD-1005</td><td>Sofia Lopez</td><td>Nov 14, 2026</td><td>₱3,600</td><td><span class="status pending">Pending</span></td></tr>
+    </tbody></table>
+  </section>
+  <footer>© 2026 NOVA Business Dashboard · Demo data for school/project use</footer>
+</main>
+</div>
+<script>
+document.getElementById('search').addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  document.querySelectorAll('#orders tr').forEach(row => {
+    row.style.display = row.cells[1].textContent.toLowerCase().includes(query) ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
